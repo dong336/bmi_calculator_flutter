@@ -4,7 +4,17 @@ import '../components/reuse_card.dart';
 import '../components/bottom_button.dart';
 
 class ResultsPage extends StatelessWidget {
-  const ResultsPage({super.key});
+
+  final String bmiResult;
+  final String resultText;
+  final String interpretation;
+
+  const ResultsPage({
+    super.key,
+    required this.bmiResult,
+    required this.resultText,
+    required this.interpretation,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -30,20 +40,20 @@ class ResultsPage extends StatelessWidget {
             flex: 5,
             child: ReuseCard(
               color_: kActiveCardColor_,
-              cardChild: const Column(
+              cardChild: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    'Normal',
-                    style: kResultTextStyle
+                    resultText.toUpperCase(),
+                    style: kResultTextStyle,
                   ),
                   Text(
-                    '18.3',
-                    style: kBMITextStyle
+                    bmiResult,
+                    style: kBMITextStyle,
                   ),
                   Text(
-                    'Your BMI result is quite low, you should eat more!',
+                    interpretation,
                     textAlign: TextAlign.center,
                     style: kBodyTextStyle,
                   ),
